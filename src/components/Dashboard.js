@@ -29,6 +29,8 @@ const Dashboard = () => {
     country: "",
   });
 
+  const [activeSection, setActiveSection] = useState("friendRequests"); // This state controls which section is active
+
   const handleInputChange = (e) => {
     setUpdatedUser({
       ...updatedUser,
@@ -213,13 +215,46 @@ const Dashboard = () => {
 
       </div>
 
-      <div>
+       {/* Toggle Buttons */}
+       <div className="toggle-buttons">
+        <button
+          className={activeSection === "friendRequests" ? "active" : ""}
+          onClick={() => setActiveSection("friendRequests")}
+        >
+          Friend Requests
+        </button>
+        <button
+          className={activeSection === "recommendations" ? "active" : ""}
+          onClick={() => setActiveSection("recommendations")}
+        >
+          Recommendations
+        </button>
+        <button
+          className={activeSection === "friendsList" ? "active" : ""}
+          onClick={() => setActiveSection("friendsList")}
+        >
+          Friends List
+        </button>
+      </div>
+
+      {/* Full Screen Content */}
+      <div className="content-section">
+        {activeSection === "friendRequests" && <FriendRequestList />}
+        {activeSection === "recommendations" && <Recommendations />}
+        {activeSection === "friendsList" && <FriendsSection friends={user?.friends} />}
+      </div>
+
+      {/* <div>
         <FriendRequestList />
       </div>
 
       <div>
         <Recommendations />
       </div>
+
+       <div>
+        <FriendsSection friends={user?.friends}  />
+      </div> */}
 
      {/* Search Results Overlay */}
   {search && (
@@ -255,17 +290,12 @@ const Dashboard = () => {
     </div>
   )}
 
-    
-
-      <div>
-        <FriendsSection friends={user?.friends}  />
-      </div>
 
       {/* Profile Sidebar */}
       {sidebarOpen && (
       <div className="profile-sidebar">
         <div className="sidebar-header">
-          <h2>Update Profile</h2>
+          <h2>Profile</h2>
           <button onClick={() => setSidebarOpen(false)} className="close-btn">X</button>
         </div>
         <div className="profile-photo-container">
@@ -275,7 +305,7 @@ const Dashboard = () => {
             </div>
           ) : (
             <div className="profile-photo">
-              <FaUser />
+              <FaUser size={40}/>
             </div>
           )}
         </div>

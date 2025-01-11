@@ -86,7 +86,8 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-main-container">
+      <div className="auth-container">
       <h1>{authType === "signup" ? "Sign Up" : "Login"}</h1>
 
       {/* Conditional rendering for signup fields */}
@@ -164,6 +165,8 @@ const Auth = () => {
         </span>
       </p>
     </div>
+    </div>
+    
   );
 };
 
