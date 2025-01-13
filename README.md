@@ -50,4 +50,7 @@ The Friend Recommendation System is designed to create a social platform where u
 ## Conclusion
 The Friend Recommendation System is a scalable and user-friendly platform that bridges connections among users based on common interests, location, and professions. Its robust recommendation algorithm and secure authentication ensure a seamless and secure user experience. With future enhancements, this system can become a comprehensive social networking solution.
 
+## App UI - Photos
+[Drive_Link](https://drive.google.com/drive/u/5/folders/1wMvvBDOAZtMIE-CztEpBlBDYdwdPT3xK)
+
 
