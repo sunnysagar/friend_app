@@ -24,7 +24,7 @@ The Friend Recommendation System is designed to create a social platform where u
 ## Tech Stack Used
 
 ### Backend
-switch main branch
+switch to **main** branch
 
 ### Frontend:
 - **React.js**: JavaScript library for building user interfaces.
