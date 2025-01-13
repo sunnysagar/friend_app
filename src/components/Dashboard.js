@@ -48,7 +48,7 @@ const Dashboard = () => {
         setError("No token found.");
         return;
       }
-      const { data } = await axios.get("http://localhost:5000/api/users/me", {
+      const { data } = await axios.get("http://localhost:5001/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(data);
@@ -87,7 +87,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:5000/api/users/sendFriendRequest`,
+        `http://localhost:5001/api/users/sendFriendRequest`,
         { friendId },
         {
           headers: {
@@ -113,7 +113,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        "http://localhost:5000/api/users/update-profile",
+        "http://localhost:5001/api/users/update-profile",
         updatedUser,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -137,7 +137,7 @@ const Dashboard = () => {
     setError("");
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/users/search?query=${search}`,
+        `http://localhost:5001/api/users/search?query=${search}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

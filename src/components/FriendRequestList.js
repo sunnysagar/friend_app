@@ -11,7 +11,7 @@ const FriendRequestList = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/api/users/friendRequests",
+        "http://localhost:5001/api/users/friendRequests",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ const FriendRequestList = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/users/acceptFriendRequest",
+        "http://localhost:5001/api/users/acceptFriendRequest",
         { friendId },
         {
           headers: {
@@ -51,7 +51,7 @@ const FriendRequestList = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/users/deleteFriendRequest",
+        "http://localhost:5001/api/users/deleteFriendRequest",
         { friendId },
         {
           headers: {

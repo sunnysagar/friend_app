@@ -22,7 +22,7 @@ const Auth = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const response = await axios.get("http://localhost:5000/api/users/me", {
+        const response = await axios.get("http://localhost:5001/api/users/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (response.data) {
@@ -56,7 +56,7 @@ const Auth = () => {
     try {
       const endpoint = authType === "signup" ? "signup" : "login";
       const { data } = await axios.post(
-        `http://localhost:5000/api/users/${endpoint}`,
+        `http://localhost:5001/api/users/${endpoint}`,
         authType === "signup"
           ? {
               firstname: formData.firstname,

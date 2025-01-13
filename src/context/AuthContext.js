@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
     const validateToken = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users/me", {
+        const response = await axios.get("http://localhost:5001/api/users/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

@@ -15,7 +15,7 @@ const Recommendations = () => {
   const fetchCurrentUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/api/users/me", {
+      const response = await axios.get("http://localhost:5001/api/users/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,7 +34,7 @@ const Recommendations = () => {
       const activeFilters = filters.length > 0 ? filters : ["mutualFriends", "hobbies"];
 
       const response = await axios.post(
-        "http://localhost:5000/api/users/recommendations",
+        "http://localhost:5001/api/users/recommendations",
         {
           filters: activeFilters,  // Send the active filters, default filters if none are selected
         },
@@ -57,7 +57,7 @@ const Recommendations = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:5000/api/users/sendFriendRequest`,
+        `http://localhost:5001/api/users/sendFriendRequest`,
         { friendId },
         {
           headers: {
