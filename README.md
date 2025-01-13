@@ -23,6 +23,9 @@ The Friend Recommendation System is designed to create a social platform where u
 
 ## Tech Stack Used
 
+### Backend
+switch main branch
+
 ### Frontend:
 - **React.js**: JavaScript library for building user interfaces.
 - **Axios**: HTTP client for making API requests.
@@ -32,10 +35,9 @@ The Friend Recommendation System is designed to create a social platform where u
 
 ## Prerequisites
 - **Node.js** and **npm** installed on your system.
-- **MongoDB** database installed locally or accessible via a cloud service.
 
 ## Installation and Setup
-### Backend:
+### Frontend:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo-name.git
