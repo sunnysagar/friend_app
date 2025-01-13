@@ -1,25 +1,25 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+// User Schema
 const userSchema = new mongoose.Schema({
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
-  phone: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  username: { type: String, required: true, unique: true },
-  profession:{type:String},
-  password: { type: String, required: true },
-  hobbies: [{ type: String }], // Changed to an array for better flexibility
-  address: {type: String},
-  city: {type: String},
-  state: {type: String},
-  country: {type: String},
-  bio: {type: String},
-  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] }],
-  friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] }],
-  pendingRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] }], // Initialize as empty array
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
+    phone: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    username: { type: String, required: true, unique: true },
+    profession: { type: String },
+    password: { type: String, required: true },
+    hobbies: [{ type: String }],
+    address: { type: String },
+    city: { type: String },
+    state: { type: String },
+    country: { type: String },
+    bio: { type: String },
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Add this if it's missing
+  });
   
-});
 
 // Hash the password before saving
 userSchema.pre('save', async function (next) {

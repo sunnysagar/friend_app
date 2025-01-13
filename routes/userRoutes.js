@@ -151,6 +151,81 @@ router.put("/update-profile", verifyToken, async (req, res) => {
   }
 });
 
+// Friend Recommendations with Filters
+// router.post("/recommendations", verifyToken, async (req, res) => {
+//   const { filters } = req.body; // Filters array sent from the client
+
+//   try {
+//     // Get the current user based on the JWT token
+//     const currentUser = await User.findById(req.user.id);
+
+//     if (!currentUser) {
+//       return res.status(404).json({ message: "Current user not found" });
+//     }
+
+//    // Fetch all users who are friends with the current user
+//     const friends = currentUser.friends || []; // Assuming `friends` is an array of user IDs in the User model
+
+//     // Fetch all pending friend requests involving the current user
+//     const sentRequests = await FriendRequest.find({ sender: currentUser._id, status: "Pending" });
+//     const receivedRequests = await FriendRequest.find({ receiver: currentUser._id, status: "Pending" });
+
+//      // Extract user IDs from friend requests
+//     const sentRequestUserIds = sentRequests.map((req) => req.receiver);
+//     const receivedRequestUserIds = receivedRequests.map((req) => req.sender);
+
+//     // Combine all excluded user IDs
+//     const excludedUserIds = [...friends, ...sentRequestUserIds, ...receivedRequestUserIds];
+    
+//     // Start with a base query that excludes the current user
+//     let query = {
+//       _id: { $ne: currentUser._id, $nin: excludedUserIds },
+//     };
+
+//     if (filters.length === 0) {
+//       // If no filters are selected, recommend users based on hobbies
+//       query.hobbies = { $in: currentUser.hobbies };
+//     } else {
+//       // Build an `$and` array to strictly match all selected filters
+//       const andConditions = [];
+
+//       if (filters.includes("hobbies") && currentUser.hobbies) {
+//         andConditions.push({ hobbies: { $in: currentUser.hobbies } });
+//       }
+//       if (filters.includes("city") && currentUser.city) {
+//         andConditions.push({ city: currentUser.city });
+//       }
+//       if (filters.includes("state") && currentUser.state) {
+//         andConditions.push({ state: currentUser.state });
+//       }
+//       if (filters.includes("profession") && currentUser.profession) {
+//         andConditions.push({ profession: currentUser.profession });
+//       }
+
+//       // If there are conditions, add them to the query
+//       if (andConditions.length > 0) {
+//         query.$and = andConditions;
+//       }
+//     }
+
+//     // Fetch users matching the query
+//     const recommendations = await User.find(query).select(
+//       "firstname lastname username city state hobbies profession"
+//     );
+
+//     // Handle empty recommendations
+//     if (!recommendations.length) {
+//       return res.status(404).json({ message: "No recommendations found" });
+//     }
+
+//     // Respond with the list of recommended users
+//     res.json(recommendations);
+//   } catch (error) {
+//     console.error("Error fetching recommendations:", error);
+//     res.status(500).json({ message: "Server error", error });
+//   }
+// });
+
 
 router.post("/recommendations", verifyToken, async (req, res) => {
   const { filters } = req.body; // Filters array sent from the client
