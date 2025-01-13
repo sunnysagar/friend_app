@@ -22,4 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/Backend
+# ignore specific floder and files
+Backend
+src\components\Login.js
+src\components\Signup.js
+src\protect.js
